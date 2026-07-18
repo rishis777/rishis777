@@ -12,7 +12,7 @@
 
 ## 🚀 About Me
 
-🎓 Computer Science Student
+🎓 Information Technology Student
 
 🤖 Passionate about Artificial Intelligence & Machine Learning
 
@@ -36,7 +36,7 @@ AI/ML Internship • Python Developer Internship • Data Analytics Internship
 # 🌐 Connect with Me
 
 <p align="left">
-<a href="(https://www.linkedin.com/in/rishikesh-borude-778696368/">
+<a href="https://www.linkedin.com/in/rishikesh-borude-778696368/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin"/>
 </a>
 
