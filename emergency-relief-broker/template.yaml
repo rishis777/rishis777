@@ -15,7 +15,7 @@ Resources:
       StageName: prod
       Cors:
         AllowMethods: "'OPTIONS,POST'"
-        AllowHeaders: "'Content-Type,X-Idempotency-Key'"
+        AllowHeaders: "'Content-Type,X-Idempotency-Key,X-API-Key'"
         AllowOrigin: "'*'"
 
   EmergencyRequestsTable:
@@ -27,6 +27,17 @@ Resources:
           AttributeType: S
       KeySchema:
         - AttributeName: request_id
+          KeyType: HASH
+
+  IdempotencyTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: idempotency_key
+          AttributeType: S
+      KeySchema:
+        - AttributeName: idempotency_key
           KeyType: HASH
 
   EmergencyRequestsDlq:
@@ -48,6 +59,13 @@ Resources:
     Properties:
       CodeUri: src/request_router
       Handler: handler.lambda_handler
+      Policies:
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt EmergencyRequestsQueue.QueueName
+        - DynamoDBCrudPolicy:
+            TableName: !Ref EmergencyRequestsTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref IdempotencyTable
       Events:
         SubmitRequest:
           Type: Api
@@ -59,6 +77,8 @@ Resources:
         Variables:
           REQUEST_QUEUE_URL: !Ref EmergencyRequestsQueue
           REQUEST_TABLE_NAME: !Ref EmergencyRequestsTable
+          IDEMPOTENCY_TABLE_NAME: !Ref IdempotencyTable
+          EXPECTED_API_KEY: ""
 
   PriorityDispatcherFunction:
     Type: AWS::Serverless::Function
@@ -66,6 +86,12 @@ Resources:
       CodeUri: src/priority_dispatcher
       Handler: handler.lambda_handler
       ReservedConcurrentExecutions: 100
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref EmergencyRequestsTable
+      Environment:
+        Variables:
+          REQUEST_TABLE_NAME: !Ref EmergencyRequestsTable
       Events:
         QueueTrigger:
           Type: SQS

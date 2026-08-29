@@ -7,16 +7,23 @@ Initial implementation scaffold for an auto-scaling, serverless emergency relief
 - **CloudFront + API Gateway**: global ingress and API management
 - **Lambda**: request router, priority dispatcher, geo-router
 - **SQS**: decoupled request queueing with DLQ
-- **DynamoDB**: request state tracking
+- **DynamoDB**: request state + idempotency tracking
 
 ## Project Structure
 
 - `template.yaml` - AWS SAM template for core infrastructure
-- `src/request_router` - ingest and validate emergency requests
-- `src/priority_dispatcher` - priority mapping and dispatch decisions
+- `src/request_router` - ingest, authorize, deduplicate, persist, and enqueue emergency requests
+- `src/priority_dispatcher` - priority mapping and dispatch status updates
 - `src/geo_router` - region selection and failover selection logic
 - `shared/schemas` - request contract schemas
 - `tests` - local unit tests
+
+## Environment Variables
+
+- `REQUEST_QUEUE_URL` - target SQS queue URL
+- `REQUEST_TABLE_NAME` - DynamoDB table for request lifecycle
+- `IDEMPOTENCY_TABLE_NAME` - DynamoDB table for idempotency keys
+- `EXPECTED_API_KEY` - optional API key to enforce in `x-api-key` header
 
 ## Local Test
 
@@ -27,6 +34,6 @@ python -m unittest discover -s tests -v
 
 ## Next Steps
 
-1. Replace local stubs with AWS SDK integrations (SQS, DynamoDB).
-2. Add API authorization, WAF policies, and idempotency storage.
+1. Add API authorization with managed AWS authorizers/JWT.
+2. Add WAF managed rule packs and abuse protection.
 3. Add CI pipeline and load-test suite for burst simulation.
