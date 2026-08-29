@@ -37,3 +37,15 @@ python -m unittest discover -s tests -v
 1. Add API authorization with managed AWS authorizers/JWT.
 2. Add WAF managed rule packs and abuse protection.
 3. Add CI pipeline and load-test suite for burst simulation.
+
+## Load Testing (Artillery)
+
+- Config file: `/home/runner/work/rishis777/rishis777/emergency-relief-broker/load-testing/artillery.yml`
+- Processor hooks: `/home/runner/work/rishis777/rishis777/emergency-relief-broker/load-testing/processor.js`
+
+Run:
+
+```bash
+cd /home/runner/work/rishis777/rishis777/emergency-relief-broker/load-testing
+TARGET_URL="https://<api-id>.execute-api.<region>.amazonaws.com/prod" npx artillery run artillery.yml
+```
