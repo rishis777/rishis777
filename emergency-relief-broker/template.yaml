@@ -1,0 +1,111 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless Emergency Relief Request Broker
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 15
+    MemorySize: 512
+
+Resources:
+  EmergencyApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors:
+        AllowMethods: "'OPTIONS,POST'"
+        AllowHeaders: "'Content-Type,X-Idempotency-Key,X-API-Key'"
+        AllowOrigin: "'*'"
+
+  EmergencyRequestsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: request_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: request_id
+          KeyType: HASH
+
+  IdempotencyTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: idempotency_key
+          AttributeType: S
+      KeySchema:
+        - AttributeName: idempotency_key
+          KeyType: HASH
+
+  EmergencyRequestsDlq:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: emergency-requests-dlq
+
+  EmergencyRequestsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: emergency-requests
+      VisibilityTimeout: 60
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt EmergencyRequestsDlq.Arn
+        maxReceiveCount: 5
+
+  RequestRouterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/request_router
+      Handler: handler.lambda_handler
+      Policies:
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt EmergencyRequestsQueue.QueueName
+        - DynamoDBCrudPolicy:
+            TableName: !Ref EmergencyRequestsTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref IdempotencyTable
+      Events:
+        SubmitRequest:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EmergencyApi
+            Path: /requests
+            Method: post
+      Environment:
+        Variables:
+          REQUEST_QUEUE_URL: !Ref EmergencyRequestsQueue
+          REQUEST_TABLE_NAME: !Ref EmergencyRequestsTable
+          IDEMPOTENCY_TABLE_NAME: !Ref IdempotencyTable
+          EXPECTED_API_KEY: ""
+
+  PriorityDispatcherFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/priority_dispatcher
+      Handler: handler.lambda_handler
+      ReservedConcurrentExecutions: 100
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref EmergencyRequestsTable
+      Environment:
+        Variables:
+          REQUEST_TABLE_NAME: !Ref EmergencyRequestsTable
+      Events:
+        QueueTrigger:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt EmergencyRequestsQueue.Arn
+            BatchSize: 10
+
+  GeoRouterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/geo_router
+      Handler: handler.lambda_handler
+
+Outputs:
+  EmergencyApiUrl:
+    Description: API endpoint URL
+    Value: !Sub "https://${EmergencyApi}.execute-api.${AWS::Region}.amazonaws.com/prod/requests"

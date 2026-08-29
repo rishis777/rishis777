@@ -1,0 +1,102 @@
+config:
+  target: "{{ $processEnvironment.TARGET_URL }}"
+  phases:
+    - name: Warm-up
+      duration: 30
+      arrivalRate: 10
+    - name: High Concurrency Disaster Surge
+      duration: 120
+      arrivalRate: 500
+  defaults:
+    headers:
+      content-type: application/json
+      x-api-key: mock-emergency-secret
+  processor: "./processor.js"
+  plugins:
+    ensure:
+      thresholds:
+        - "http.response_time.p95 < 100"
+
+scenarios:
+  - name: Normal Flow Unique Idempotency
+    weight: 95
+    flow:
+      - function: setUniqueRequestData
+      - post:
+          url: "/requests"
+          headers:
+            x-idempotency-key: "{{ idempotencyKey }}"
+          json:
+            citizen_id: "{{ citizenId }}"
+            severity: "{{ severity }}"
+            location:
+              lat: "{{ lat }}"
+              lon: "{{ lon }}"
+            description: "{{ description }}"
+          afterResponse: assertAcceptedStatus
+
+  - name: Idempotency Stress Duplicate Burst
+    weight: 5
+    flow:
+      - function: setDuplicateBurstData
+      - parallel:
+          - post:
+              url: "/requests"
+              headers:
+                x-idempotency-key: "{{ duplicateIdempotencyKey }}"
+              json:
+                citizen_id: "{{ duplicateCitizenId }}"
+                severity: "{{ duplicateSeverity }}"
+                location:
+                  lat: "{{ duplicateLat }}"
+                  lon: "{{ duplicateLon }}"
+                description: "{{ duplicateDescription }}"
+              afterResponse: assertAcceptedStatus
+          - post:
+              url: "/requests"
+              headers:
+                x-idempotency-key: "{{ duplicateIdempotencyKey }}"
+              json:
+                citizen_id: "{{ duplicateCitizenId }}"
+                severity: "{{ duplicateSeverity }}"
+                location:
+                  lat: "{{ duplicateLat }}"
+                  lon: "{{ duplicateLon }}"
+                description: "{{ duplicateDescription }}"
+              afterResponse: assertAcceptedStatus
+          - post:
+              url: "/requests"
+              headers:
+                x-idempotency-key: "{{ duplicateIdempotencyKey }}"
+              json:
+                citizen_id: "{{ duplicateCitizenId }}"
+                severity: "{{ duplicateSeverity }}"
+                location:
+                  lat: "{{ duplicateLat }}"
+                  lon: "{{ duplicateLon }}"
+                description: "{{ duplicateDescription }}"
+              afterResponse: assertAcceptedStatus
+          - post:
+              url: "/requests"
+              headers:
+                x-idempotency-key: "{{ duplicateIdempotencyKey }}"
+              json:
+                citizen_id: "{{ duplicateCitizenId }}"
+                severity: "{{ duplicateSeverity }}"
+                location:
+                  lat: "{{ duplicateLat }}"
+                  lon: "{{ duplicateLon }}"
+                description: "{{ duplicateDescription }}"
+              afterResponse: assertAcceptedStatus
+          - post:
+              url: "/requests"
+              headers:
+                x-idempotency-key: "{{ duplicateIdempotencyKey }}"
+              json:
+                citizen_id: "{{ duplicateCitizenId }}"
+                severity: "{{ duplicateSeverity }}"
+                location:
+                  lat: "{{ duplicateLat }}"
+                  lon: "{{ duplicateLon }}"
+                description: "{{ duplicateDescription }}"
+              afterResponse: assertAcceptedStatus
