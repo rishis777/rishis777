@@ -1,10 +1,12 @@
 <div align="center">
 
-# Hi 👋, I'm Rishikesh Borude
+# 👋 Hi, I'm Rishikesh Borude
 
-<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=28&pause=1000&color=00C2FF&center=true&vCenter=true&width=700&lines=AI+%26+Machine+Learning+Developer;Python+Developer;Data+Analytics+Enthusiast;Open+Source+Learner;Building+AI+Projects+Every+Day+🚀" />
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=26&pause=1000&color=00C2FF&center=true&vCenter=true&width=750&lines=AI+%26+Machine+Learning+Developer;Python+Developer;Data+Analytics+Enthusiast;Open+Source+Learner;Building+AI+Projects+Every+Day+🚀" alt="Typing SVG" />
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C2FF,100:6A5ACD&height=220&section=header&text=Welcome%20to%20My%20GitHub&fontSize=45&fontColor=ffffff&animation=fadeIn" />
+<br>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C2FF,100:6A5ACD&height=180&section=header&text=Welcome%20to%20My%20GitHub&fontSize=40&fontColor=ffffff&animation=fadeIn" alt="GitHub Header" />
 
 </div>
 
@@ -12,159 +14,191 @@
 
 ## 🚀 About Me
 
-🎓 Information Technology Student
+🎓 **Information Technology Student**
 
-🤖 Passionate about Artificial Intelligence & Machine Learning
+🤖 Passionate about **Artificial Intelligence & Machine Learning**
 
-💻 Python | Machine Learning | Data Analytics | Deep Learning
+💻 Interested in **Python, Machine Learning, Data Analytics and Deep Learning**
 
-🌱 Currently Learning
+🌱 Currently Learning:
 
-- Generative AI
-- LangChain
-- RAG
-- MLOps
-- Docker
-- Kubernetes
+- 🤖 Generative AI
+- 🔗 LangChain
+- 📚 RAG
+- ⚙️ MLOps
+- 🐳 Docker
+- ☸️ Kubernetes
 
-🎯 Looking for
+🎯 Looking For:
 
-AI/ML Internship • Python Developer Internship • Data Analytics Internship
+**AI/ML Internship • Python Developer Internship • Data Analytics Internship**
 
 ---
 
-# 🌐 Connect with Me
+## 🌐 Connect With Me
 
-<p align="left">
+<div align="center">
+
 <a href="https://www.linkedin.com/in/rishikesh-borude-778696368/">
-<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin"/>
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
 </a>
 
 <a href="mailto:rishisborude007@gmail.com">
-<img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/>
+<img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/>
 </a>
 
 <a href="https://github.com/rishis777">
-<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github"/>
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
 </a>
-</p>
+
+</div>
 
 ---
 
 # 💻 Tech Stack
 
-### Languages
+### 🐍 Programming Languages
 
-<p>
+<div align="center">
 
-<img src="https://skillicons.dev/icons?i=python,cpp,c,java,javascript,html,css,sql"/>
+<img src="https://skillicons.dev/icons?i=python,cpp,c,java,javascript,html,css,sql" />
 
-</p>
+</div>
 
-### AI / ML
+### 🤖 AI / Machine Learning
 
-<p>
+<div align="center">
 
-<img src="https://skillicons.dev/icons?i=tensorflow,pytorch,opencv"/>
+<img src="https://skillicons.dev/icons?i=tensorflow,pytorch,opencv" />
 
-</p>
+</div>
 
-### Frameworks
+### 🌐 Frameworks & Development
 
-<p>
+<div align="center">
 
-<img src="https://skillicons.dev/icons?i=fastapi,flask,nodejs,react,nextjs"/>
+<img src="https://skillicons.dev/icons?i=fastapi,flask,nodejs,react,nextjs" />
 
-</p>
+</div>
 
-### Databases
+### 🗄️ Databases
 
-<p>
+<div align="center">
 
-<img src="https://skillicons.dev/icons?i=mysql,mongodb,sqlite,postgres"/>
+<img src="https://skillicons.dev/icons?i=mysql,mongodb,sqlite,postgres" />
 
-</p>
+</div>
 
-### Tools
+### 🛠️ Tools & Platforms
 
-<p>
+<div align="center">
 
-<img src="https://skillicons.dev/icons?i=git,github,vscode,docker,linux"/>
+<img src="https://skillicons.dev/icons?i=git,github,vscode,docker,linux" />
 
-</p>
+</div>
 
 ---
 
 # 📊 GitHub Analytics
 
-<p align="center">
+<div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=rishis777&show_icons=true&theme=tokyonight&hide_border=true"/>
+<a href="https://github.com/rishis777">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rishis777&layout=compact&theme=tokyonight&hide_border=true"/>
+<img height="180" src="https://github-readme-stats.vercel.app/api?username=rishis777&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" alt="Rishikesh's GitHub Stats"/>
 
-</p>
+</a>
 
----
+<a href="https://github.com/rishis777">
 
-# 🔥 Contribution Streak
+<img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rishis777&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="Top Languages"/>
 
-<p align="center">
+</a>
 
-<img src="https://streak-stats.demolab.com?user=rishis777&theme=tokyonight&hide_border=true"/>
-
-</p>
+</div>
 
 ---
 
-# 🏆 GitHub Trophies
+# 🔥 GitHub Contribution Streak
 
-<p align="center">
+<div align="center">
 
-<img src="https://github-profile-trophy.vercel.app/?username=rishis777&theme=tokyonight&column=4&margin-w=15&margin-h=15"/>
+<img src="https://streak-stats.demolab.com?user=rishis777&theme=tokyonight&hide_border=true&border_radius=10" alt="GitHub Streak"/>
 
-</p>
+</div>
 
 ---
 
-# 📈 Contribution Graph
+# 📈 GitHub Activity
 
-<p align="center">
+<div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=rishis777&theme=tokyo-night"/>
+<a href="https://github.com/rishis777">
 
-</p>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=rishis777&theme=tokyo-night&hide_border=true&area=true" alt="GitHub Activity Graph"/>
+
+</a>
+
+</div>
 
 ---
 
 # 🚀 Featured Projects
 
-⭐ AI Chatbot
+<div align="center">
 
-⭐ Machine Learning Projects
+<a href="https://github.com/rishis777">
+<img src="https://img.shields.io/badge/🤖%20AI%20Projects-00C2FF?style=for-the-badge" />
+</a>
 
-⭐ Data Analytics Dashboard
+<a href="https://github.com/rishis777">
+<img src="https://img.shields.io/badge/🧠%20Machine%20Learning-6A5ACD?style=for-the-badge" />
+</a>
 
-⭐ Computer Vision
+<a href="https://github.com/rishis777">
+<img src="https://img.shields.io/badge/📊%20Data%20Analytics-00C2FF?style=for-the-badge" />
+</a>
 
-⭐ Full Stack AI Applications
+<br><br>
 
-⭐ Open Source Contributions
+<a href="https://github.com/rishis777">
+<img src="https://img.shields.io/badge/👁️%20Computer%20Vision-6A5ACD?style=for-the-badge" />
+</a>
+
+<a href="https://github.com/rishis777">
+<img src="https://img.shields.io/badge/🌐%20Full%20Stack%20AI-00C2FF?style=for-the-badge" />
+</a>
+
+<a href="https://github.com/rishis777">
+<img src="https://img.shields.io/badge/🔓%20Open%20Source-6A5ACD?style=for-the-badge" />
+</a>
+
+</div>
 
 ---
 
-# 💡 Quote
+# 💡 Developer Quote
 
-> "Code. Learn. Build. Repeat."
+<div align="center">
+
+### `"Code. Learn. Build. Repeat."` 🚀
+
+</div>
 
 ---
 
 <div align="center">
 
-<img src="https://komarev.com/ghpvc/?username=rishis777&label=Profile+Views&color=00C2FF&style=for-the-badge"/>
+<img src="https://komarev.com/ghpvc/?username=rishis777&label=Profile%20Views&color=00C2FF&style=for-the-badge" alt="Profile Views"/>
 
-### ⭐ Thanks for visiting my profile ⭐
+<br><br>
+
+### ⭐ Thanks for visiting my profile! ⭐
+
+**Let's build something amazing together. 🚀**
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6A5ACD,100:00C2FF&height=120&section=footer"/>
+<br>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6A5ACD,100:00C2FF&height=120&section=footer" alt="Footer"/>
