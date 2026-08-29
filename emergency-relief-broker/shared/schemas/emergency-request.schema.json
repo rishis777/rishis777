@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EmergencyRequest",
+  "type": "object",
+  "required": ["citizen_id", "severity", "location", "description"],
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "citizen_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low"]
+    },
+    "location": {
+      "type": "object",
+      "required": ["lat", "lon"],
+      "properties": {
+        "lat": { "type": "number" },
+        "lon": { "type": "number" }
+      }
+    },
+    "description": {
+      "type": "string",
+      "minLength": 5
+    }
+  },
+  "additionalProperties": false
+}
